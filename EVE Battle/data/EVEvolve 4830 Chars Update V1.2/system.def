@@ -1,0 +1,1025 @@
+; =============
+;        DJ-VAN
+; =============
+;  "Everything Vs Everything"
+;  version :	.76
+;----------------------------
+[Info]
+name = "EVEvolve 4830 Chars Update V1.2"          ;Name of motif
+author = "DJ-VAN"       ;Motif author name
+localcoords = 320,240
+
+;----------------------------
+[Files]
+spr = data/EVE Battle/system.sff            ;Filename of sprite data
+snd = data/EVE Battle/system.snd            ;Filename of sound data
+logo.storyboard = logo.def ;MUGEN_Intro.def  ;Logo storyboard definition (optional) *2001.04.01 NEW*
+intro.storyboard =       ;Intro storyboard definition (optional) *2001.04.01 NEW*
+select = data/EVEvolve 4830 Chars Update V1.2/select.def         ;Character and stage selection list
+fight = data/EVE Battle/fight.def          ;Fight definition filename
+font1 = data/EVE Battle/font/f-4x6.fnt      ;System fonts
+font2 = data/EVE Battle/font/f-6x9.fnt      ;System fonts
+font3 = data/EVE Battle/font/jg.fnt         ;System fonts
+font4 = data/EVE Battle/font/qoh_big.fnt
+font5 = data/EVE Battle/font/qoh_sm~1.fnt
+font6 = data/EVE Battle/font/DJV-CUSTOM.fnt
+font7 = data/EVE Battle/font/DJV-END.fnt
+
+;----------------------------
+[Music]
+;Put a filename for a MOD, MP3 or MIDI here, or just leave it
+;blank if you do not want music. If an invalid filename is
+;given, then no music will play. To play CD audio, put
+;the track number followed by ".da". For example, to play
+;track 3 from a music CD at the title screen, use:
+;  title.bgm = 3.da
+;To play mymusic.mp3 from the sound/ directory, put:
+;  title.bgm = sound/mymusic.mp3
+;Music to play at title screen.
+title.bgm = data/EVE Battle/Session.mp3
+title.bgm.loop = 1        ;Set to 0 to prevent looping *2001.04.01 NEW*
+;Music to play at char select screen.
+ select.bgm = data/EVE Battle/SELECT.mp3
+select.bgm.loop = 1       ;*2001.04.01 NEW*
+ ;Music to play at versus screen.
+ vs.bgm = data/EVE Battle/VERSUS.mp3
+vs.bgm.loop = 0           ;*2001.04.01 NEW*
+
+;-------------------------------------------------------------------
+;Title screen definition
+[Title Info]
+cursor.move.snd = 100,0
+cursor.done.snd = 100,1
+cancel.snd = 100,2
+menu.pos = 159,143
+menu.item.font = 5,0,0
+menu.item.active.font = 4,0,0
+menu.item.spacing = 0, 11
+; Names for each of the items in the menu. Names must be in quotes.
+menu.itemname.arcade = "ARCADE"
+menu.itemname.versus = "VS"
+menu.itemname.teamarcade = "TEAM"
+menu.itemname.teamversus = "TEAM VS"
+menu.itemname.teamcoop = "TEAM EX"
+menu.itemname.survival = "SURVIVAL"
+menu.itemname.survivalcoop = "SURVIVAL EX"
+menu.itemname.training = "TRAINING"
+menu.itemname.watch = "WATCH"
+menu.itemname.options = "OPTIONS"
+menu.itemname.exit = "EXIT"
+
+;----------------------------
+;Title background definition
+[TitleBGdef]
+bgclearcolor = 0,0,0
+
+[TitleBG 0,haze]
+type = parallax;normal
+layerno = 0
+spriteno = 300,1
+start = 160,0
+mask = 0
+trans = add
+velocity = 1.05625;0.8125
+tile = 1,0
+width = 300,25;400,25
+yscalestart = 110;  Starting y-scale (float, in percent)  (def: 100)
+yscaledelta = 5;?  Change in y-scale per unit (float, in percent)  (def: 0)
+
+[TitleBG 0,haze 2]
+type = parallax;normal
+layerno = 0
+spriteno = 300,3
+start = -160,120
+mask = 0
+velocity = 0.11125;0.1625
+tile = 1,0
+width = 20,300;20
+yscalestart = 100;  Starting y-scale (float, in percent)  (def: 100)
+yscaledelta = 5;?  Change in y-scale per unit (float, in percent)  (def: 0)
+
+[TitleBG 0,haze bg]
+type = normal
+layerno = 0
+spriteno = 300,4
+start = -160,113
+mask = 0
+trans = add
+velocity = 0.08
+tile = 1,0
+
+[TitleBG 0,haze]
+type = normal
+layerno = 0
+spriteno = 300,5
+start = -160,240
+velocity = 1.5;0.8125
+tile = 1,1
+mask = 0
+trans = add
+;------------ Lightning ---------------
+
+[TitleBG 0a] ;lightning (top right side)
+type  = anim
+actionno = 350
+layerno = 0
+start = 20,-40
+trans = add
+
+[TitleBG 0a] ;lightning (top left side)
+type  = anim
+actionno = 351
+layerno = 0
+start = -20,-40
+trans = add
+
+[TitleBG 0a] ;lightning (bottom right side)
+type  = anim
+actionno = 352
+layerno = 0
+start = 10,245
+trans = add
+
+[TitleBG 0a] ;lightning (bottom left side)
+type  = anim
+actionno = 353
+layerno = 0
+start = -10,245
+trans = add
+
+[TitleBG 0] ;BLUE SWIRL
+type = normal
+layerno = 0
+spriteno = 50,0
+start = -160,0
+mask = 0
+trans = add
+
+[TitleBG 0] ;EARTH shad
+type = normal
+layerno = 0
+spriteno = 1,9
+start = -160,0
+trans = add
+
+[TitleBG 0] ;RING grey
+type = normal
+layerno = 0
+spriteno = 1,10
+start = -160,0
+trans = add
+
+[TitleBG 0] ;EARTH
+type = normal
+layerno = 0
+spriteno = 1,7
+start = -160,0
+trans = sub
+
+;[TitleBG 0] ;RING
+;type = normal
+;layerno = 0
+;spriteno = 1,5
+;start = -160,0
+;mask = 1
+
+[TitleBG 0] ;TITLE SHADOW
+type = normal
+layerno = 0
+spriteno = 1,2
+start = -160,0
+trans = add
+
+;[TitleBG 0] ;TITLE SHADOW SUB
+;type = normal
+;layerno = 0
+;spriteno = 1,7
+;start = -160,0
+;trans = SUB
+
+[TitleBG 0] ;TITLE 
+type = normal
+layerno = 0
+spriteno = 1,1
+start = -160,0
+mask = 1
+
+[TitleBG 0] ;blackbox
+type = normal
+layerno = 0
+spriteno = 1,3
+start = -160,120
+trans = sub
+
+[TitleBG 0] ;grey side1
+type = normal
+layerno = 0
+spriteno = 1,4
+start = 33,120
+trans = add
+
+[TitleBG 0] ;grey side1
+type = normal
+layerno = 0
+spriteno = 1,4
+start = -43,120
+trans = add
+
+[TitleBG 0]
+type = normal
+layerno = 0
+spriteno = 10,11
+start = 3840, -6000
+mask = 1
+
+;============== Screen Transitions ================
+
+[TitleBG 1.b1];fader
+type = normal
+layerno = 0
+spriteno = 900,0
+start = 0,0
+velocity = 0,-12
+trans = add
+tile = 1,0
+
+[TitleBG 1.b1];fader
+type = normal
+layerno = 1
+spriteno = 900,0
+start = 0,0
+velocity = 0,-30
+trans = add
+tile = 1,0
+
+;-------------------------------------------------------------------
+;Character select definition
+[Select Info]
+rows = 75 ;28
+columns = 101
+wrapping = 1
+pos = 8,9	;20
+showemptyboxes = 0
+moveoveremptyboxes = 0
+cell.size = .1,.1
+cell.spacing = 3
+cell.bg.anim  = 1500
+cell.random.spr = 151,0
+cell.random.switchtime = 4
+cell.random.scale = .40,.40
+cell.bg.scale = .40,.40
+p1.cursor.startcell = 0,32
+p1.cursor.active.spr = 170,0 
+p1.cursor.done.spr = 171,0 
+p1.cursor.move.snd = 100,0 
+p1.cursor.done.snd = 100,1 
+p1.random.move.snd = 100,0
+p1.cursor.active.scale = 0.40,0.40
+p1.cursor.done.scale = 0.40,0.40
+p2.cursor.startcell = 0,33
+p2.cursor.active.spr = 160,0 
+p2.cursor.done.spr = 161,0 
+p2.cursor.blink = 1
+p2.cursor.move.snd = 100,0 
+p2.cursor.done.snd = 100,1 
+p2.random.move.snd = 100,0
+p2.cursor.active.scale = 0.40,0.40
+p2.cursor.done.scale = 0.40,0.40
+random.move.snd.cancel = 0
+stage.move.snd = 100,0
+stage.done.snd = 100,1
+cancel.snd = 100,2 
+portrait.offset = 0,0 
+portrait.scale = .1,.1 
+title.offset = -50,-50
+title.font = 3,0,0
+;Big portraits
+p1.face.offset = 9,12 
+p1.face.scale = 0.75,0.75 
+p1.face.facing = 1
+p2.face.offset = 309,126
+p2.face.scale = 0.75,0.75
+p2.face.facing = -1
+;Name
+p1.name.offset = 9,19
+p1.name.font = 5,0,1
+p2.name.offset = 309,133
+p2.name.font = 5,0,-1
+;Stage select
+stage.pos = 160,8
+stage.active.font = 5,0
+stage.active2.font = 5,0
+stage.done.font = 5,0
+;Team menu
+teammenu.move.wrapping = 1
+p1.teammenu.pos = 13,40	 ;10, 110
+p1.teammenu.bg.spr = 0,1
+p1.teammenu.selftitle.font = 4,0, 1
+p1.teammenu.selftitle.text = TEAM MODE
+p1.teammenu.enemytitle.font = 4,0, 1
+p1.teammenu.enemytitle.text = COMP MODE
+p1.teammenu.move.snd = 100,0
+p1.teammenu.value.snd = 100,0
+p1.teammenu.done.snd = 100,1
+p1.teammenu.item.offset = 0,20
+p1.teammenu.item.spacing = 0,15
+p1.teammenu.item.font = 4,0, 1
+p1.teammenu.item.active.font = 4,5, 1
+p1.teammenu.item.active2.font = 4,0, 1
+p1.teammenu.item.cursor.offset = -10, 0
+p1.teammenu.item.cursor.anim = 180
+p1.teammenu.value.icon.offset = 60,1
+p1.teammenu.value.icon.spr = 181,0
+p1.teammenu.value.empty.icon.offset = 60,1
+p1.teammenu.value.empty.icon.spr = 182,0
+p1.teammenu.value.spacing = 6,0
+;p2 team
+p2.teammenu.pos = 305,155	;308, 110
+;p2.teammenu.bg.spr =
+p2.teammenu.selftitle.font = 4,0, -1
+p2.teammenu.selftitle.text = TEAM MODE
+p2.teammenu.enemytitle.font = 4,0, -1
+p2.teammenu.enemytitle.text = COMP MODE
+p2.teammenu.move.snd = 100,0
+p2.teammenu.value.snd = 100,0
+p2.teammenu.done.snd = 100,1
+p2.teammenu.item.offset = 0,20
+p2.teammenu.item.spacing = 0,15
+p2.teammenu.item.font = 4,0, -1
+p2.teammenu.item.active.font = 4,5, -1
+p2.teammenu.item.active2.font = 4,0, -1
+p2.teammenu.item.cursor.offset = 0, 0
+p2.teammenu.item.cursor.anim = 190
+p2.teammenu.value.icon.offset = -60,1
+p2.teammenu.value.icon.spr = 191,0
+p2.teammenu.value.empty.icon.offset = -60,1
+p2.teammenu.value.empty.icon.spr = 192,0
+p2.teammenu.value.spacing = -6,0
+;Sounds
+
+[Begin Action 1500] ;? animation
+loopstart
+150,0, 0,0, 2, ,a
+
+;-----------------------
+;Character select screen background
+[SelectBGdef]
+;spr = graphics/selectbg.sff  ;Filename of sprite data
+
+[SelectBG 1] ;BLUE VORTEX
+type  = Anim
+actionno = 750
+layerno = 0
+start = -160,0
+
+[SelectBG 1] ;CLOUD VORTEX
+type  = Anim
+actionno = 770
+layerno = 0
+start = -160,0
+trans = add
+
+[SelectBG 1] ;CLOUD SWIVIL 4 SHISLE
+type  = Anim
+actionno = 780
+layerno = 0
+start = -160,0
+trans = add
+
+;------------ Lightning ---------------
+
+[SelectBG 0a] ;lightning (top right side)
+type  = anim
+actionno = 350
+layerno = 0
+start = 20,-40
+trans = add
+
+[SelectBG 0a] ;lightning (top left side)
+type  = anim
+actionno = 351
+layerno = 0
+start = -20,-40
+trans = add
+
+[SelectBG 0a] ;lightning (bottom right side)
+type  = anim
+actionno = 352
+layerno = 0
+start = 10,290
+trans = add
+
+[SelectBG 0a] ;lightning (bottom left side)
+type  = anim
+actionno = 353
+layerno = 0
+start = -10,290
+trans = add
+
+[SelectBG 1] ;BLUE SWIRL
+type = normal
+layerno = 0
+spriteno = 50,0
+start = -160,0
+mask = 0
+trans = add
+
+[SelectBG 1] ;P1 PORTRAIT OUTLINE
+type = normal
+layerno = 0
+spriteno = 80,0
+start = -154,9
+mask = 1
+trans = add
+
+[SelectBG 1] ;P2 PORTRAIT OUTLINE
+type = normal
+layerno = 0
+spriteno = 80,0
+start = 57,123
+mask = 1
+trans = add
+
+[SelectBG 1] ;GRID
+type  = normal
+spriteno = 100,0
+layerno = 1
+start = -160, 1
+mask= 1
+
+[Begin Action 180] ;P1 Team mode cursor
+180,0, 2,0, 1
+180,0, 3,0, 1
+180,0, 4,0, 1
+180,0, 5,0, 1
+180,0,6,0, 1
+180,0,7,0, 1
+180,0,8,0, 1
+180,0,9,0, 1
+
+[Begin Action 190] ;P2 Team mode cursor
+190,0, 2,0, 1
+190,0, 3,0, 1
+190,0, 4,0, 1
+190,0, 5,0, 1
+190,0,6,0, 1
+190,0,7,0, 1
+190,0,8,0, 1
+190,0,9,0, 1
+
+[Begin Action 750] ;BLUE VORTEX ANIMATION
+loopstart
+75,0, 0,0, 2
+75,1, 0,0, 2
+75,2, 0,0, 2
+75,3, 0,0, 2
+75,4, 0,0, 2
+75,5, 0,0, 2
+75,6, 0,0, 2
+75,7, 0,0, 2
+75,8, 0,0, 2
+75,9, 0,0, 2
+75,10, 0,0, 2
+75,11, 0,0, 2
+75,12, 0,0, 2
+75,13, 0,0, 2
+75,14, 0,0, 2
+
+[Begin Action 770]  ;CLOUD VORTEX ANIMATION
+loopstart
+77,0, 0,0, 1, ,A
+77,1, 0,0, 1, ,A
+77,2, 0,0, 1, ,A
+77,3, 0,0, 1, ,A
+77,4, 0,0, 1, ,A
+77,5, 0,0, 1, ,A
+77,6, 0,0, 1, ,A
+77,7, 0,0, 1, ,A
+77,8, 0,0, 1, ,A
+77,9, 0,0, 1, ,A
+77,10, 0,0, 1, ,A
+77,11, 0,0, 1, ,A
+77,12, 0,0, 1, ,A
+77,13, 0,0, 1, ,A
+77,14, 0,0, 1, ,A
+77,15, 0,0, 1, ,A
+77,16, 0,0, 1, ,A
+77,17, 0,0, 1, ,A
+77,18, 0,0, 1, ,A
+77,19, 0,0, 1, ,A
+77,20, 0,0, 1, ,A
+77,21, 0,0, 1, ,A
+77,22, 0,0, 1, ,A
+77,23, 0,0, 1, ,A
+77,24, 0,0, 1, ,A
+77,25, 0,0, 1, ,A
+77,26, 0,0, 1, ,A
+77,27, 0,0, 1, ,A
+77,28, 0,0, 1, ,A
+77,29, 0,0, 1, ,A
+77,30, 0,0, 1, ,A
+77,31, 0,0, 1, ,A
+77,32, 0,0, 1, ,A
+77,33, 0,0, 1, ,A
+77,34, 0,0, 1, ,A
+77,35, 0,0, 1, ,A
+77,36, 0,0, 1, ,A
+77,37, 0,0, 1, ,A
+77,38, 0,0, 1, ,A
+77,39, 0,0, 1, ,A
+
+[Begin Action 780]  ;CLOUD VORTEX ANIMATION
+loopstart
+78,0, 0,0, 3, ,A
+78,1, 0,0, 3, ,A
+78,2, 0,0, 3, ,A
+78,3, 0,0, 3, ,A
+78,4, 0,0, 3, ,A
+78,5, 0,0, 3, ,A
+78,6, 0,0, 3, ,A
+78,7, 0,0, 3, ,A
+78,8, 0,0, 3, ,A
+78,9, 0,0, 3, ,A
+78,10, 0,0, 3, ,A
+78,11, 0,0, 3, ,A
+78,12, 0,0, 3, ,A
+78,13, 0,0, 3, ,A
+78,14, 0,0, 3, ,A
+78,15, 0,0, 3, ,A
+78,16, 0,0, 3, ,A
+78,17, 0,0, 3, ,A
+78,18, 0,0, 3, ,A
+78,19, 0,0, 3, ,A
+78,20, 0,0, 3, ,A
+78,21, 0,0, 3, ,A
+78,22, 0,0, 3, ,A
+78,23, 0,0, 3, ,A
+78,24, 0,0, 3, ,A
+78,25, 0,0, 3, ,A
+78,26, 0,0, 3, ,A
+78,27, 0,0, 3, ,A
+78,28, 0,0, 3, ,A
+78,29, 0,0, 3, ,A
+78,30, 0,0, 3, ,A
+78,31, 0,0, 3, ,A
+78,32, 0,0, 3, ,A
+78,33, 0,0, 3, ,A
+78,34, 0,0, 3, ,A
+78,35, 0,0, 3, ,A
+78,36, 0,0, 3, ,A
+78,37, 0,0, 3, ,A
+78,38, 0,0, 3, ,A
+78,39, 0,0, 3, ,A
+
+[begin action 350] ; Lightning 1 (top right side)
+-1,-1,0,0,82;Blank
+350,0,0,0,2, ,A
+-1,-1,0,0,2;Blank
+350,0,0,0,2, ,A
+350,1,0,0,2, ,A
+-1,-1,0,0,2;Blank
+350,1,0,0,2, ,A
+
+[begin action 351] ; Lightning 2 (top left side)
+350,0,0,0,2,H ,A
+-1,-1,0,0,2;Blank
+350,0,0,0,2,H ,A
+350,1,0,0,2,H ,A
+-1,-1,0,0,2;Blank
+350,1,0,0,2,H ,A
+-1,-1,0,0,112;Blank
+
+[begin action 352] ; Lightning 2 (bottom right side)
+-1,-1,0,0,61;Blank
+350,0,0,0,2,V ,A
+-1,-1,0,0,2;Blank
+350,0,0,0,2,V ,A
+350,1,0,0,2,V ,A
+-1,-1,0,0,2;Blank
+350,1,0,0,2,V ,A
+-1,-1,0,0,61;Blank
+
+[begin action 353] ; Lightning 2 (bottom left side)
+-1,-1,0,0,36;Blank
+350,0,0,0,2,VH ,A
+-1,-1,0,0,2;Blank
+350,0,0,0,2,VH ,A
+350,1,0,0,2,VH ,A
+-1,-1,0,0,2;Blank
+350,1,0,0,2,VH ,A
+-1,-1,0,0,66;Blank
+;============== Screen Transitions ================
+
+[SelectBG 1.b1];fader
+type = normal
+layerno = 0
+spriteno = 900,0
+start = 0,0
+velocity = 0,-10
+trans = add
+tile = 1,0
+
+[SelectBG 1.b1];fader
+type = normal
+layerno = 1
+spriteno = 900,0
+start = 0,0
+velocity = 0,-25
+trans = add
+tile = 1,0
+
+;-------------------------------------------------------------------
+[VS Screen]
+time = 700                ;Time to show screen
+;Big portraits
+;X,Y
+p1.pos =  0,16 ;0, 31	;0,0
+p1.facing = 1             ;*2001.04.01 NEW*
+p1.scale = 1,1            ;*2001.04.01 NEW*
+
+p2.pos = 319,136 ;320,151 ;322,129
+p2.facing = -1            ;*2001.04.01 NEW*
+p2.scale = 1,1          ;*2001.04.01 NEW*
+;Names
+p1.name.pos  =  128,70 ;115,70
+p1.name.font =   4,0,1
+p1.name.spacing = 0,15
+p2.name.pos  = 191,190 ;205,190
+p2.name.font =   4,0,-1
+p2.name.layerno = 1
+p2.name.spacing = 0,15
+
+;-----------------------
+;VS Match up screen background
+[VersusBGdef] 
+
+[VersusBG 1] ;RED HAIL
+type  = Anim
+actionno = 2050
+layerno = 0
+start = -160,31
+
+[VersusBG 1] ;BLUE HAIL
+type  = Anim
+actionno = 2060
+layerno = 0
+start = -160,151
+
+[VersusBG 1] ;BLUE HAIL cover up
+type  = Anim
+actionno = 2040
+layerno = 1
+start = -160,151	
+
+[VersusBG 1] ;RED ARROW
+type = normal
+layerno = 0
+spriteno = 208,0
+start = -160,31
+mask = 1
+trans = add
+
+[VersusBG 1] ;RED SPACER
+type = normal
+layerno = 0
+spriteno = 208,1
+start = -40,31
+
+[VersusBG 1] ;BLUE ARROW
+type = normal
+layerno = 0
+spriteno = 209,0
+start = -50,151 ;-40,151
+mask = 1
+trans = add
+
+[VersusBG 1] ;BLUE SPACER
+type = normal
+layerno = 0
+spriteno = 209,1
+start = 32,151
+
+[VersusBG 1] ;BLACK BARS
+;type  = normal
+;spriteno = 210,2
+;layerno = 1 ; Front
+;start = 0,0
+;mask = 1
+type  = Anim
+actionno = 210
+layerno = 1 ; Front
+start = 0,0
+mask = 1
+
+[VersusBG 3] ;VS Logo
+type  = Anim
+actionno = 200
+layerno = 1 ; Front
+start = -160,90
+mask = 1
+
+[Begin Action 2050] ;RED HAIL
+loopstart
+205,0, 0,0, 2
+205,1, 0,0, 2
+205,2, 0,0, 2
+205,3, 0,0, 2
+205,4, 0,0, 2
+205,5, 0,0, 2
+205,6, 0,0, 2
+205,7, 0,0, 2
+205,8, 0,0, 2
+205,9, 0,0, 2
+205,10, 0,0, 2
+205,11, 0,0, 2
+205,12, 0,0, 2
+205,13, 0,0, 2
+205,14, 0,0, 2
+
+[Begin Action 2060] ;BLUE HAIL
+loopstart
+206,0, 0,0,2
+206,1, 0,0,2
+206,2, 0,0,2
+206,3, 0,0,2
+206,4, 0,0,2
+206,5, 0,0,2
+206,6, 0,0,2
+206,7, 0,0,2
+206,8, 0,0,2
+206,9, 0,0,2
+206,10, 0,0,2
+206,11, 0,0,2
+206,12, 0,0,2
+206,13, 0,0,2
+206,14, 0,0,2
+
+[Begin Action 2040] ;BLUE HAIL
+loopstart
+204,0, 0,0,2
+204,1, 0,0,2
+204,2, 0,0,2
+204,3, 0,0,2
+204,4, 0,0,2
+204,5, 0,0,2
+204,6, 0,0,2
+204,7, 0,0,2
+204,8, 0,0,2
+204,9, 0,0,2
+204,10, 0,0,2
+204,11, 0,0,2
+204,12, 0,0,2
+204,13, 0,0,2
+204,14, 0,0,2
+
+[Begin Action 210] ;BLACK BARS ANIMATION
+210,1, 0,0, 13
+;210,15, 0,0, 13
+;;;;;;;;;;;;;;;210,0, 0,0, 30
+;210,14, 0,0, 15
+210,1, 0,0, 30
+210,2, 0,0, 3
+210,3, 0,0, 3
+210,4, 0,0, 3
+210,5, 0,0, 3
+210,6, 0,0, 3
+210,7, 0,0, 3
+210,8, 0,0, 3
+210,9, 0,0,-1
+
+[Begin Action 200] ;VS ANIMATION
+199,0, 0,0, 60
+200,0, 0,0, 2
+200,0, 0,0, 2
+200,1, 0,0, 2
+200,2, 0,0, 2
+200,3, 0,0, 2
+200,4, 0,0, 2
+200,5, 0,0, 2
+200,6, 0,0, 2
+200,7, 0,0, 2
+200,8, 0,0, 2
+200,9, 0,0, 2
+200,10, 0,0, 2
+200,11, 0,0, 2
+200,12, 0,0, 2
+200,13, 0,0, 2
+200,14, 0,0, 2
+200,15, 0,0, 2
+200,16, 0,0, 2
+200,17, 0,0, 2
+200,18, 0,0, 2
+200,19, 0,0, 2
+200,20, 0,0, 2
+200,21, 0,0, 2
+200,22, 0,0, 2
+200,23, 0,0, -1
+
+;-------------------------------------------------------------------
+;Demo mode definition
+;Whole group is *2001.04.01 NEW*
+[Demo Mode]
+enabled = 1               ;Set to 1 to enable demo mode, 0 to disable
+select.enabled = 0        ;Set to 1 to display select screen, 0 to disable
+vsscreen.enabled = 1      ;Set to 1 to display versus screen, 0 to disable
+title.waittime = 600      ;Time to wait at title before starting demo mode
+fight.endtime = 1500      ;Time to display the fight before returning to title
+fight.playbgm = 1         ;Set to 1 to enable in-fight BGM, 0 to disable
+fight.bars.display = 0    ;Set to 1 to display lifebar, 0 to disable
+intro.waitcycles = 1      ;Cycles to wait before intro cutscene is played again
+debuginfo = 0             ;Set to 0 to hide debugging info (debug mode only)
+
+;-------------------------------------------------------------------
+;Continue screen definition
+;Whole group is *2001.04.01 NEW*
+[Continue Screen]
+enabled = 1               ;Set to 1 to show continue screen, 0 to disable
+
+;-------------------------------------------------------------------
+;Game over screen definition
+;Whole group is *2001.04.01 NEW*
+[Game Over Screen]
+enabled = 0               ;Set to 1 to show game over screen, 0 to disable
+storyboard = gameover.def          ;Game over storyboard filename
+
+;-------------------------------------------------------------------
+;Win screen definition
+;This is the screen that is shown when you win in arcade mode.
+;It will not be displayed if the winning character has an ending.
+[Win Screen]
+enabled = 1               ;Set to 1 to show win screen, 0 to disable *2001.04.01 NEW*
+wintext.text = 0
+wintext.font = 7,0,0
+wintext.offset = 160,65
+wintext.displaytime = -1
+wintext.layerno = 2
+fadein.time = 32
+pose.time = 300
+fadeout.time = 64
+
+;-------------------------------------------------------------------
+;Game ending screen definition
+;This screen shows up after the Win Screen.
+;It will not be displayed if the winning character has an ending.
+;Whole group is *2001.04.01 NEW*
+[Default Ending]
+enabled = 0              ;Set to 1 to show credits, 0 to disable
+storyboard =             ;Default ending storyboard filename
+
+;-------------------------------------------------------------------
+;Ending credits screen definition
+;This screen shows up after the Win Screen and Ending
+;Whole group is *2001.04.01 NEW*
+[End Credits]
+enabled = 1               ;Set to 1 to show credits, 0 to disable
+storyboard = credits.def             ;Credits storyboard filename
+
+;-------------------------------------------------------------------
+;Survival mode results screen definition
+;This is the screen that is shown when you win in survival mode.
+;It will not be displayed if the winning character has an ending.
+;Whole group is *2001.11.14 NEW*
+[Survival Results Screen]
+enabled = 1
+winstext.text = Rounds survived: %i  ;Use %i for win counter
+winstext.font = 3,0,0
+winstext.offset = 159,70
+winstext.displaytime = -1
+winstext.layerno = 2
+fadein.time = 32
+show.time = 300
+fadeout.time = 64
+roundstowin = 10          ;Number of rounds to get win pose (lose pose otherwise)
+
+;-------------------------------------------------------------------
+;Options screen definition
+[Option Info]
+cursor.move.snd = 100,0
+cursor.done.snd = 100,1
+cancel.snd = 100,2
+
+;-------------------
+;Options screen background
+[OptionBGdef] 
+
+[OptionBG 1] ;COMIX STRIP
+type  = normal
+layerno = 0
+spriteno = 500,0
+start = -160,0
+tile  = 1,0
+velocity = -1,0
+
+;------------ Lightning ---------------
+
+[OptionBG 0a] ;lightning (top right side)
+type  = anim
+actionno = 350
+layerno = 0
+start = 20,-40
+trans = add
+
+[OptionBG 0a] ;lightning (top left side)
+type  = anim
+actionno = 351
+layerno = 0
+start = -20,-40
+trans = add
+
+[OptionBG 0a] ;lightning (bottom right side)
+type  = anim
+actionno = 352
+layerno = 0
+start = 10,290
+trans = add
+
+[OptionBG 0a] ;lightning (bottom left side)
+type  = anim
+actionno = 353
+layerno = 0
+start = -10,290
+trans = add
+
+[OptionBG 1] ;MIST
+type  = normal
+spriteno = 340,0
+layerno = 0
+start = -160,0
+tile  = 1,0
+velocity=-0.5
+trans = sub
+
+[OptionBG 1] ;MIST
+type  = normal
+spriteno = 340,1
+layerno = 0
+start = -160,0
+tile  = 1,0
+velocity=0.5
+trans = sub
+
+[OptionBG 1] ;BLUE SWIRL
+type = normal
+layerno = 0
+spriteno = 50,0
+start = -160,0
+mask = 0
+trans = add
+
+[begin action 350] ; Lightning 1 (top right side)
+-1,-1,0,0,70;Blank
+350,0,0,0,3, ,A
+-1,-1,0,0,3;Blank
+350,0,0,0,3, ,A
+350,1,0,0,3, ,A
+-1,-1,0,0,3;Blank
+350,1,0,0,3, ,A
+
+[begin action 351] ; Lightning 2 (top left side)
+350,0,0,0,3,H ,A
+-1,-1,0,0,3;Blank
+350,0,0,0,3,H ,A
+350,1,0,0,3,H ,A
+-1,-1,0,0,3;Blank
+350,1,0,0,3,H ,A
+-1,-1,0,0,100;Blank
+
+[begin action 352] ; Lightning 2 (bottom right side)
+-1,-1,0,0,55;Blank
+350,0,0,0,3,V ,A
+-1,-1,0,0,3;Blank
+350,0,0,0,3,V ,A
+350,1,0,0,3,V ,A
+-1,-1,0,0,3;Blank
+350,1,0,0,3,V ,A
+-1,-1,0,0,55;Blank
+
+[begin action 353] ; Lightning 2 (bottom left side)
+-1,-1,0,0,30;Blank
+350,0,0,0,3,VH ,A
+-1,-1,0,0,3;Blank
+350,0,0,0,3,VH ,A
+350,1,0,0,3,VH ,A
+-1,-1,0,0,3;Blank
+350,1,0,0,3,VH ,A
+-1,-1,0,0,60;Blank
+
+;============== Screen Transitions ================
+
+[OptionBG 1.b1];fader
+type = normal
+layerno = 0
+spriteno = 900,0
+start = 0,0
+velocity = 0,-10
+trans = add
+tile = 1,0
+
+[OptionBG 1.b1];fader
+type = normal
+layerno = 1
+spriteno = 900,0
+start = 0,0
+velocity = 0,-25
+trans = add
+tile = 1,0
